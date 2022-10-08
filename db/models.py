@@ -9,11 +9,11 @@ metadata = Base.metadata
 class AGENT(Base):
     __tablename__ = 'AGENTS'
 
-    AGENT_CODE = Column(CHAR(6), primary_key=True)
-    AGENT_NAME = Column(CHAR(40))
-    WORKING_AREA = Column(CHAR(35))
-    COMMISSION = Column(CHAR(10))
-    PHONE_NO = Column(CHAR(15))
+    AGENT_CODE = Column(String(6), primary_key=True)
+    AGENT_NAME = Column(String(40))
+    WORKING_AREA = Column(String(35))
+    COMMISSION = Column(String(10))
+    PHONE_NO = Column(String(15))
     COUNTRY = Column(String(25))
 
 

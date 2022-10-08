@@ -8,8 +8,8 @@ load_dotenv(dotenv_path=env_path)
 
 
 class Settings:
-    PROJECT_NAME:str = "FastAPI Tutorials"
-    PROJECT_VERSION: str = "1.0.0"
+    PROJECT_NAME:str = "Agents API"
+    PROJECT_VERSION: str = "1.0.1"
     
     
     POSTGRES_USER : str = os.getenv("POSTGRES_USER")
