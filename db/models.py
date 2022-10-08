@@ -35,7 +35,7 @@ class CUSTOMER(Base):
 
     CUST_CODE = Column(String(6), primary_key=True)
     CUST_NAME = Column(String(40), nullable=False)
-    CUST_CITY = Column(CHAR(35))
+    CUST_CITY = Column(String(35))
     WORKING_AREA = Column(String(35), nullable=False)
     CUST_COUNTRY = Column(String(20), nullable=False)
     GRADE = Column(Integer)

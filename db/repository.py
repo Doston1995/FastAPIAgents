@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
-from db.models import AGENT
+from db.models import AGENT, CUSTOMER
 from db.schemas import AgentCreate, AgentShow
 
 
-
+###################### Agents ###################
 def list_agents(db : Session):   
     agents = db.query(AGENT).all()
     return agents
@@ -38,3 +38,9 @@ def delete_agent(AGENT_CODE:str, db: Session):
     existing_agent.delete(synchronize_session=False)
     db.commit()
     return 1
+
+
+###################### Customers  ###################
+def list_customers(db : Session):   
+    customers = db.query(CUSTOMER).all()
+    return customers
