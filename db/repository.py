@@ -55,7 +55,27 @@ def create_customer(customer: CustomerCreate, db: Session):
     return customer_object
     
 
-
 def retreive_customer(cust_code:str, db:Session):
     customer = db.query(CUSTOMER).filter(CUSTOMER.CUST_CODE == cust_code).first()
     return customer
+
+
+def update_customer(cust_code:str, customer: CustomerShow, db: Session):
+    existing_customer = db.query(CUSTOMER).filter(CUSTOMER.CUST_CODE == cust_code)
+    if not existing_customer.first():
+        return 0
+    existing_customer.update(customer.__dict__)
+    db.commit()
+    return 1
+
+
+def delete_customer(cust_code:str, db: Session):
+    existing_customer = db.query(CUSTOMER).filter(CUSTOMER.CUST_CODE == cust_code)
+    if not existing_customer.first():
+        return 0
+    existing_customer.delete(synchronize_session=False)
+    db.commit()
+    return 1
+
+
+###################### Orders  ###################
