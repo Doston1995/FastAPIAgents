@@ -45,7 +45,6 @@ class CUSTOMER(Base):
     OUTSTANDING_AMT = Column(CHAR(12), nullable=False)
     PHONE_NO = Column(String(17), nullable=False)
     AGENT_CODE = Column(ForeignKey('AGENTS.AGENT_CODE', ondelete='CASCADE', onupdate='CASCADE'), nullable=False)
-
     AGENT = relationship('AGENT')
 
 

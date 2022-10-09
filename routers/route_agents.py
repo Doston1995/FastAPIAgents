@@ -15,7 +15,7 @@ def get_all_agents(db:Session = Depends(get_db)):
 
 
 @router.post("/create/",response_model=AgentShow)
-def create_agents(agent: AgentCreate,db: Session = Depends(get_db)):
+def create_agent(agent: AgentCreate,db: Session = Depends(get_db)):
     agent = create_agent(agent=agent, db=db)
     return agent
 
@@ -41,7 +41,7 @@ def update_agents(agent_code:str,agent: AgentCreate, db: Session = Depends(get_d
 def delete_agents(agent_code:str, db: Session = Depends(get_db)):
     agent = retreive_agent(AGENT_CODE=agent_code,db=db)
     if not agent:
-        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Agent with {agent_code} does not exist")
+        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Agent with this code {agent_code} does not exist")
     if agent:
         delete_agent(AGENT_CODE=agent_code,db=db)
         return {"detail": "Successfully deleted."} 

@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel
 
 
@@ -32,13 +32,14 @@ class AgentShow(BaseModel):
 
 
 ######################## Customers #####################################
+
 class CustomerBase(BaseModel):
     CUST_CODE : Optional[str] = None
     CUST_NAME : Optional[str] = None
     CUST_CITY: Optional[str] = None
     WORKING_AREA : Optional[str] = None
     CUST_COUNTRY : Optional[str] = None
-    GRADE : Optional[int] = None
+    GRADE : int
     OPENING_AMT : Optional[str] = None
     RECEIVE_AMT : Optional[str] = None
     PAYMENT_AMT : Optional[str] = None
@@ -47,15 +48,30 @@ class CustomerBase(BaseModel):
     AGENT_CODE : Optional[str] = None
 
 
-class CustomerShow(BaseModel):
+class CustomerCreate(BaseModel):
     CUST_CODE : str
+    CUST_NAME : str
+    CUST_CITY: str
     WORKING_AREA : str
-    GRADE : str
+    CUST_COUNTRY : str
+    GRADE : int
     OPENING_AMT : str
     RECEIVE_AMT : str
     PAYMENT_AMT : str
     OUTSTANDING_AMT : str
-    AGENT_CODE : str
+    PHONE_NO : str
+    AGENT_CODE : Optional[str]
+
+
+class CustomerShow(BaseModel):
+    CUST_CODE : str
+    WORKING_AREA : str
+    GRADE : int
+    OPENING_AMT : str
+    RECEIVE_AMT : str
+    PAYMENT_AMT : str
+    OUTSTANDING_AMT : str
+    AGENT_CODE : Optional[str]
     
     class Config():
         orm_mode = True

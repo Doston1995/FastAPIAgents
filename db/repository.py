@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from db.models import AGENT, CUSTOMER
-from db.schemas import AgentCreate, AgentShow
+from db.schemas import AgentCreate, AgentShow, CustomerCreate, CustomerShow
 
 
 ###################### Agents ###################
@@ -41,6 +41,21 @@ def delete_agent(AGENT_CODE:str, db: Session):
 
 
 ###################### Customers  ###################
-def list_customers(db : Session):   
+
+def list_customers(db : Session):
     customers = db.query(CUSTOMER).all()
     return customers
+
+
+def create_customer(customer: CustomerCreate, db: Session):
+    customer_object = CUSTOMER(**customer.dict())
+    db.add(customer_object)
+    db.commit()
+    db.refresh(customer_object)
+    return customer_object
+    
+
+
+def retreive_customer(cust_code:str, db:Session):
+    customer = db.query(CUSTOMER).filter(CUSTOMER.CUST_CODE == cust_code).first()
+    return customer

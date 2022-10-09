@@ -3,7 +3,7 @@ from core.config import settings
 from routers.base import api_router
 from db.session import engine
 from db.models import Base
-
+from starlette.middleware.cors import CORSMiddleware
 
 
 def include_router(app):
@@ -13,7 +13,7 @@ def include_router(app):
 def create_tables():
     Base.metadata.create_all(bind=engine)
 
-              
+
 def start_application():
     app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
     include_router(app)
