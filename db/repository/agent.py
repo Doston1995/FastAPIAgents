@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from db.models import AGENT
 from schemas.agent import AgentCreate, AgentShow
+import datetime, uuid
+
 
 
 def list_agents(db : Session):   
@@ -9,7 +11,16 @@ def list_agents(db : Session):
 
 
 def create_agent(agent: AgentCreate, db: Session):
-    agent_object = AGENT(**agent.dict())
+    create_at = str(datetime.datetime.now())
+    agent_object = AGENT(
+                        AGENT_CODE = agent.AGENT_CODE,
+                        AGENT_NAME = agent.AGENT_NAME,
+                        WORKING_AREA = agent.WORKING_AREA,
+                        COMMISSION = agent.COMMISSION,
+                        PHONE_NO = agent.PHONE_NO,
+                        COUNTRY = agent.COUNTRY,
+                        CREATE_AT = create_at,
+    )
     db.add(agent_object)
     db.commit()
     db.refresh(agent_object)

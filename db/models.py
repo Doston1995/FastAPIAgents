@@ -1,6 +1,7 @@
 from sqlalchemy import CHAR, Column, Date, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from db.base import Base
+from sqlalchemy_utils.types import ChoiceType
 
 
 class AGENT(Base):
@@ -12,9 +13,11 @@ class AGENT(Base):
     COMMISSION = Column(String(10))
     PHONE_NO = Column(String(15))
     COUNTRY = Column(String(25))
+    CREATE_AT = Column(String(50))
 
 
 class User(Base):
+    
     __tablename__ = 'users'
 
     id = Column(String, primary_key=True)
@@ -22,7 +25,7 @@ class User(Base):
     password = Column(String)
     first_name = Column(String)
     last_name = Column(String)
-    gender = Column(CHAR(1))
+    gender = Column(String)
     create_at = Column(String)
     status = Column(CHAR(1))
 
@@ -41,6 +44,7 @@ class CUSTOMER(Base):
     PAYMENT_AMT = Column(CHAR(12), nullable=False)
     OUTSTANDING_AMT = Column(CHAR(12), nullable=False)
     PHONE_NO = Column(String(17), nullable=False)
+    CREATE_AT = Column(String(50))
     AGENT_CODE = Column(ForeignKey('AGENTS.AGENT_CODE', ondelete='CASCADE', onupdate='CASCADE'), nullable=False)
     AGENT = relationship('AGENT')
 

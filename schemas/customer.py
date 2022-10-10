@@ -14,6 +14,7 @@ class CustomerBase(BaseModel):
     PAYMENT_AMT : Optional[str] = None
     OUTSTANDING_AMT : Optional[str] = None
     PHONE_NO : Optional[str] = None
+    CREATE_AT : Optional[str] = None
     AGENT_CODE : Optional[str] = None
 
 

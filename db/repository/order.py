@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from db.models import ORDER
 from schemas.order import OrderCreate, OrderShow
-
+import datetime, uuid
 
 
 def list_orders(db : Session):
@@ -10,7 +10,16 @@ def list_orders(db : Session):
 
 
 def create_order(order: OrderCreate, db: Session):
-    order_object = ORDER(**order.dict())
+    ord_date = str(datetime.datetime.now())
+    order_object = ORDER(
+                        ORD_NUM = order.ORD_NUM,
+                        ORD_AMOUNT = order.ORD_AMOUNT,
+                        ADVANCE_AMOUNT = order.ADVANCE_AMOUNT,
+                        ORD_DATE = ord_date,
+                        CUST_CODE = order.CUST_CODE,
+                        AGENT_CODE = order.AGENT_CODE,
+                        ORD_DESCRIPTION = order.ORD_DESCRIPTION
+    )
     db.add(order_object)
     db.commit()
     db.refresh(order_object)

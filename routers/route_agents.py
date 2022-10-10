@@ -17,7 +17,7 @@ def get_all_agents(db:Session = Depends(get_db)):
 
 
 @router.post("/create/",response_model=AgentShow)
-def create_agent(agent: AgentCreate,db: Session = Depends(get_db)):
+def create_agents(agent: AgentCreate,db: Session = Depends(get_db)):
     agent = create_agent(agent=agent, db=db)
     return agent
 

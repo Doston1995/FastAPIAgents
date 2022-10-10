@@ -11,6 +11,7 @@ class AgentBase(BaseModel):
     COMMISSION : Optional[str] = None
     PHONE_NO : Optional[str] = None
     COUNTRY : Optional[str] = None
+    CREATE_AT : Optional[str] = None
 
 
 class AgentCreate(BaseModel):
@@ -20,6 +21,9 @@ class AgentCreate(BaseModel):
     COMMISSION : str
     PHONE_NO : str
     COUNTRY : str
+    
+    class Config():
+        orm_mode = True
 
 
 class AgentShow(BaseModel):
