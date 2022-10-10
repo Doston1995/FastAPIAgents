@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status
 from db.session import get_db
 from typing import List 
-from db.schemas import CustomerShow, CustomerCreate
-from db.repository import list_customers, create_customer, retreive_customer, update_customer, delete_customer
+from schemas.customer import CustomerShow, CustomerCreate
+from db.repository.customer import list_customers, create_customer, retreive_customer, update_customer, delete_customer
 
 router = APIRouter()
 

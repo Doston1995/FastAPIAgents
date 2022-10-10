@@ -1,9 +1,6 @@
 from sqlalchemy import CHAR, Column, Date, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-metadata = Base.metadata
+from db.base import Base
 
 
 class AGENT(Base):

@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status
 from db.session import get_db
 from typing import List 
-from db.schemas import OrderShow, OrderCreate
-from db.repository import list_orders, create_order, retreive_order, update_order, delete_order
+from schemas.order import OrderShow, OrderCreate
+from db.repository.order import list_orders, create_order, retreive_order, update_order, delete_order
 
 
 router = APIRouter()

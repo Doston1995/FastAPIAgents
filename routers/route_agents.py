@@ -3,8 +3,10 @@ from sqlalchemy.orm import Session
 from fastapi import Depends,HTTPException,status
 from db.session import get_db
 from typing import List 
-from db.schemas import AgentShow, AgentCreate
-from db.repository import list_agents, create_agent, retreive_agent, update_agent, delete_agent
+from schemas.agent import AgentShow, AgentCreate
+from db.repository.agent import list_agents, create_agent, retreive_agent, update_agent, delete_agent
+
+
 router = APIRouter()
 
 
