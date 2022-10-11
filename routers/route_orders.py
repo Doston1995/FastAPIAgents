@@ -26,7 +26,8 @@ def create_orders(order: OrderCreate, db: Session = Depends(get_db)):
 def read_customer(ord_num:str, db:Session = Depends(get_db)):
     order = retreive_order(ord_num=ord_num, db=db)
     if not order:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Order with this number {ord_num} does not exist")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"Order with this number {ord_num} does not exist")
     return order
 
 
@@ -43,7 +44,8 @@ def update_orders(ord_num:str, order: OrderCreate, db: Session = Depends(get_db)
 def delete_orders(ord_num:str, db: Session = Depends(get_db)):
     order = retreive_order(ord_num=ord_num,db=db)
     if not order:
-        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Order with this number {ord_num} does not exist")
+        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                             detail=f"Order with this number {ord_num} does not exist")
     if order:
         delete_order(ord_num=ord_num,db=db)
         return {"detail": "Successfully deleted."} 

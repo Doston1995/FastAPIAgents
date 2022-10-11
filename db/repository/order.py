@@ -10,9 +10,10 @@ def list_orders(db : Session):
 
 
 def create_order(order: OrderCreate, db: Session):
+    order_number   = str(uuid.uuid1())
     ord_date = str(datetime.datetime.now())
     order_object = ORDER(
-                        ORD_NUM = order.ORD_NUM,
+                        ORD_NUM = order_number,
                         ORD_AMOUNT = order.ORD_AMOUNT,
                         ADVANCE_AMOUNT = order.ADVANCE_AMOUNT,
                         ORD_DATE = ord_date,

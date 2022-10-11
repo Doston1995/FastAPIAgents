@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from db.models import AGENT
-from schemas.agent import AgentCreate, AgentShow
+from schemas.agent import AgentCreate, AgentShow, AgentUpdate
 import datetime, uuid
 
 

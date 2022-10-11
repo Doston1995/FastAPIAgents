@@ -26,12 +26,13 @@ def create_users(user: UserCreate, db: Session = Depends(get_db)):
 def read_user(user_id:str, db:Session = Depends(get_db)):
     user = retreive_user(user_id=user_id, db=db)
     if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"User with this id {user_id} does not exist")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"User with this id {user_id} does not exist")
     return user
 
 
 @router.put("/update/{user_id}") 
-def update_users(user_id:str, user: UserCreate, db: Session = Depends(get_db)):
+def update_users(user_id:str, user: UserUpdate, db: Session = Depends(get_db)):
     message = update_user(user_id=user_id, user=user, db=db)
     if not message:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -43,7 +44,8 @@ def update_users(user_id:str, user: UserCreate, db: Session = Depends(get_db)):
 def delete_users(user_id:str, db: Session = Depends(get_db)):
     user = retreive_user(user_id=user_id,db=db)
     if not user:
-        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"User with this id {user_id} does not exist")
+        return HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                             detail=f"User with this id {user_id} does not exist")
     if user:
         delete_user(user_id=user_id,db=db)
         return {"detail": "Successfully deleted."} 

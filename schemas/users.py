@@ -5,14 +5,14 @@ from enum import Enum
 
 
 class UserBase(BaseModel):
-    id         : Optional[str] = None
-    username   : Optional[str] = None
-    password   : Optional[str] = None
-    first_name : Optional[str] = None
-    last_name  : Optional[str] = None
-    gender     : Optional[str] = None
-    create_at  : Optional[str] = None
-    status     : Optional[str] = None
+    id          : Optional[str] = None
+    username    : Optional[str] = None
+    password    : Optional[str] = None
+    first_name  : Optional[str] = None
+    last_name   : Optional[str] = None
+    gender      : Optional[str] = None
+    create_at   : Optional[str] = None
+    status      : Optional[str] = None
 
 
 class UserShow(BaseModel):
@@ -27,7 +27,7 @@ class UserShow(BaseModel):
     
     class Config():
         orm_mode = True
-        use_enum_values = True
+
 
 class UserCreate(BaseModel):
     username    :str = Field(..., example = "Doston")
@@ -41,7 +41,6 @@ class UserCreate(BaseModel):
 
 
 class UserUpdate(BaseModel):
-    id          :str = Field(..., example = "Your id")  
     first_name  :str = Field(..., example = "Doston")
     last_name   :str = Field(..., example = "Imomaliyev")
     gender      :str = Field(..., example = "M")
@@ -52,7 +51,7 @@ class UserUpdate(BaseModel):
     
     
 class UserDelete(BaseModel):
-    id: str = Field(..., example = "Enter your id")
+    id          : str = Field(..., example = "Enter your id")
     
     class Config():
         orm_mode = True
