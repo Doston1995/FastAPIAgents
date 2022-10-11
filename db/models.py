@@ -25,6 +25,7 @@ class User(Base):
     id         = Column(String, primary_key=True)
     username   = Column(String)
     password   = Column(String)
+    email      = Column(String)
     first_name = Column(String)
     last_name  = Column(String)
     gender     = Column(String)

@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from db.models import User
 from schemas.users import UserCreate, UserShow, UserUpdate, UserDelete
 import datetime, uuid
-from db.session import pwd_context
+from db.hashing import Hasher
 
 def list_users(db : Session):
     users = db.query(User).all()
@@ -14,13 +14,14 @@ def create_user(user: UserCreate, db: Session):
     user_id   = str(uuid.uuid1())
     user_object = User(
         id = user_id,
-        username = user.username,
-        password = pwd_context.hash(user.password),
+        username   = user.username,
+        password   = Hasher.get_password_hash(user.password),
+        email      = user.email,
         first_name = user.first_name,
         last_name  = user.last_name,
-        gender = user.gender,
-        create_at = user_date,
-        status = "1"
+        gender     = user.gender,
+        create_at  = user_date,
+        status     = "1"
     )
     db.add(user_object)
     db.commit()
